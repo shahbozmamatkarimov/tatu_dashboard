@@ -7,7 +7,7 @@
             <router-link to="/"><i class="bx bxs-dashboard"></i></router-link>
             <router-link to="/profile"><i class="bx bxs-user-circle "></i></router-link>
             <router-link to="/messages"><i class="bx bxs-chat"></i></router-link>
-            <img class="h-10 w-10 border-2 rounded-full" src="../../public/favicon.ico" alt="img">
+            <img class="h-10 w-10 border-2 rounded-full" src="../../public/myphoto.jpg" alt="img">
         </div>
     </nav>
 </template>
