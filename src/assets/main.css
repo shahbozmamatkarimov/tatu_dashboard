@@ -6,3 +6,7 @@ body{
   background: #343E59;
   overflow: hidden;
 }
+
+::-webkit-scrollbar{
+  width: 0;
+}

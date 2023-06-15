@@ -7,6 +7,9 @@ import NetworkView from './NetworkView.vue'
 import MessageView from './MessageView.vue'
 import SettingView from './SettingView.vue'
 import SkillView from './SkillView.vue'
+import AdminView from './AdminView.vue'
+import LoginView from './LoginView.vue'
+import RegisterView from './RegisterView.vue'
 
 export {
     DashboardView,
@@ -18,4 +21,7 @@ export {
     MessageView,
     SettingView,
     SkillView,
+    AdminView,
+    LoginView,
+    RegisterView,
 }
