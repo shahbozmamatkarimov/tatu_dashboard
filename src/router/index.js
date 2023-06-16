@@ -11,7 +11,6 @@ import {
   SkillView,
   AdminView,
   LoginView,
-  RegisterView,
 } from '../views'
 
 const router = createRouter({
@@ -73,11 +72,6 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: LoginView,
-    },
-    {
-      path: '/register',
-      name: 'register',
-      component: RegisterView,
     }
   ]
 })

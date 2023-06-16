@@ -28,10 +28,10 @@
                                 rows="2" required></textarea>
                             <div class="flex justify-between items-center w-full">
                                 <button type="submit"
-                                    class="flex items-center gap-2 text-white bg-[#8080805b] px-3 rounded-lg">
+                                    class="flex items-center gap-2 text-white bg-[#8080805b] px-5 rounded-lg">
                                     send <i class='bx bxs-send'></i>
                                 </button>
-                                <button class="flex items-center gap-2 text-white bg-[#8080805b] px-3 rounded-lg">
+                                <button class="flex items-center gap-2 text-white bg-[#8080805b] px-5 rounded-lg">
                                     <i class='bx bx-refresh'></i> reset
                                 </button>
                             </div>

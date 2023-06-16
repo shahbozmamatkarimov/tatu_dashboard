@@ -81,7 +81,7 @@
 
 <script setup>
 import ApexCharts from 'apexcharts';
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 
 window.Apex = {
     chart: {

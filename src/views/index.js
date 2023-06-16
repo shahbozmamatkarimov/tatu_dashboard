@@ -9,7 +9,6 @@ import SettingView from './SettingView.vue'
 import SkillView from './SkillView.vue'
 import AdminView from './AdminView.vue'
 import LoginView from './LoginView.vue'
-import RegisterView from './RegisterView.vue'
 
 export {
     DashboardView,
@@ -23,5 +22,4 @@ export {
     SkillView,
     AdminView,
     LoginView,
-    RegisterView,
 }

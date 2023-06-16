@@ -23,6 +23,12 @@ import { header } from "../constants/header"
 }
 
 .router-link-active {
+    background: transparent;
+    box-shadow: none;
+    transition-duration: 1s;
+}
+
+.router-link-exact-active {
     background: #3097ed;
     box-shadow: 2px 2px 8px #3098ed74;
     transition-duration: 1s;

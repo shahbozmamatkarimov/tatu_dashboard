@@ -38,10 +38,10 @@
                 </div>
                 <div class="w-[60%] px-5">
                     <h1 class="pb-2 text-lg font-medium">
-                        <input class="bg-transparent outline-none" type="text" placeholder="title...">
+                        <input v-model="form.title" class="bg-transparent outline-none" type="text" placeholder="title...">
                     </h1>
                     <p class="text-sm text-gray-300">
-                        <textarea minlength="10" maxlength="200" class="w-full bg-transparent outline-none px-1" rows="4"
+                        <textarea v-model="form.description" minlength="10" maxlength="200" class="w-full bg-transparent outline-none px-1" rows="4"
                             placeholder="About project..." required></textarea>
                     </p>
                     <p class="py-2 flex items-center gap-2"><i class='bx bx-star'></i>0</p>
@@ -60,6 +60,18 @@
     </main>
 </template>
 
-<script setup></script>
+<script setup>
+import { reactive } from 'vue';
+
+const form = reactive({
+    image: "",
+    title: "",
+    description: "",
+    link: "",
+    github_link: "",
+    languages: "",
+    comment_id: ""
+})
+</script>
 
 <style lang="scss" scoped></style>

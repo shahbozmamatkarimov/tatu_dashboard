@@ -10,18 +10,19 @@
                             class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                             Sign in to your account
                         </h1>
-                        <form class="space-y-4 md:space-y-6" action="#">
+                        <form @submit.prevent="formInfo" class="space-y-4 md:space-y-6">
                             <div>
                                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                                     email</label>
-                                <input type="email" name="email" id="email"
+                                <input v-model="form.email" type="email" name="email" id="email"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="name@company.com" required="">
                             </div>
                             <div>
                                 <label for="password"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                                <input type="password" name="password" id="password" placeholder="••••••••"
+                                <input v-model="form.password" type="password" name="password" id="password"
+                                    placeholder="••••••••"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     required="">
                             </div>
@@ -47,13 +48,47 @@
                                 Don’t have an account yet? <a href="#"
                                     class="font-medium text-blue-600 hover:underline dark:text-blue-500">Sign up</a>
                             </p>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-</main></template>
+        </section>
+    </main>
+</template>
 
-<script setup></script>
+<script setup>
+import { reactive } from 'vue';
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
+const form = reactive({
+    email: '',
+    password: '',
+})
+
+const formInfo = () => {
+    try {
+        const info = fetch('http://localhost:3000/api/admin/login', {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                email: form.email,
+                password: form.password,
+            })
+        })
+            .then(async response => {
+                const data = await response.json();
+                const accessToken = data.access_token;
+                localStorage.setItem('tokenAdminPanel', accessToken)
+                router.push('/')
+            })
+            .catch(error => {
+                console.error("There was an error!", error);
+            });
+    } catch (error) {
+        console.log(error, 'error message');
+    }
+}
+</script>
 
 <style lang="scss" scoped></style>
