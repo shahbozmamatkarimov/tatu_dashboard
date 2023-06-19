@@ -51,10 +51,10 @@
                     class="bg-white ml-3 mr-9 my-2 shadow-md border border-gray-200 rounded max-w-sm">
                     <div class="relative">
                         <label for="img">
-                            <img v-show="!form.image" class="rounded-t border-2 h-48 cursor-pointer w-full"
+                            <img v-show="!form.image" class="rounded-t border-2 h-48 cursor-pointer"
                                 src="https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg"
                                 alt="img">
-                            <img v-show="form.image" class="rounded-t border-2 h-48 cursor-pointer w-full" :src="form.image"
+                            <img v-show="form.image" class="rounded-t border-2 h-48 cursor-pointer" :src="form.image"
                                 alt="img">
                         </label>
                         <input type="file" @change="upload" id="img" class="w-0 h-0 absolute" required>
