@@ -175,10 +175,10 @@
                         <div class="bg-white shadow-md border border-gray-200 rounded max-w-sm">
                             <div class="relative">
                                 <label for="img1">
-                                    <img v-show="!modal.image" class="rounded-t border-2 h-48 cursor-pointer"
+                                    <img v-show="!modal.image" class="rounded-t border-2 h-48 mx-auto cursor-pointer"
                                         src="https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg"
                                         alt="img">
-                                    <img v-show="modal.image" class="rounded-t border-2 h-48 cursor-pointer"
+                                    <img v-show="modal.image" class="rounded-t border-2 h-48 mx-auto cursor-pointer"
                                         :src="modal.image" alt="img">
                                 </label>
                                 <input type="file" @input="uploadModal" id="img1" class="w-0 h-0 absolute" required>
