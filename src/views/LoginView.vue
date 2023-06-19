@@ -68,7 +68,7 @@ const form = reactive({
 
 const formInfo = () => {
     try {
-        const info = fetch('http://localhost:3000/api/admin/login', {
+        const info = fetch('http://localhost:4000/api/admin/login', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -76,8 +76,8 @@ const formInfo = () => {
                 password: form.password,
             })
         })
-            .then(async response => {
-                const data = await response.json();
+            .then(async res => {
+                const data = await res.json();
                 const accessToken = data.access_token;
                 localStorage.setItem('tokenAdminPanel', accessToken)
                 router.push('/')

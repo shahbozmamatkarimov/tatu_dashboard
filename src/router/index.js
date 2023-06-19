@@ -7,6 +7,7 @@ import {
   ContentView,
   NetworkView,
   MessageView,
+  CommentView,
   SettingView,
   SkillView,
   AdminView,
@@ -60,6 +61,11 @@ const router = createRouter({
           path: '/messages',
           name: 'messages',
           component: MessageView,
+        },
+        {
+          path: '/comments',
+          name: 'comments',
+          component: CommentView,
         },
         {
           path: '/settings',

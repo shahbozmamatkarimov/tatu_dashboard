@@ -43,6 +43,12 @@ export const header = [
     },
     {
         id: 3,
+        title: 'Comment',
+        link: "/comments",
+        icon: "bx bxs-message-detail"
+    },
+    {
+        id: 3,
         title: 'Messages',
         link: "/messages",
         icon: "bx bxs-chat"

@@ -1,5 +1,5 @@
 <template>
-    <nav class="flex justify-between items-center mb-10 text-white fixed">
+    <nav class="flex bg-[#343E59] z-50 pt-5 pb-3 justify-between items-center mb-10 text-white fixed">
         <h1 class="text-3xl font-medium py-1">
             <slot></slot>
         </h1>

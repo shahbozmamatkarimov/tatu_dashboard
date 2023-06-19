@@ -5,6 +5,7 @@ import ExperienceView from './ExperienceView.vue'
 import ContentView from './ContentView.vue'
 import NetworkView from './NetworkView.vue'
 import MessageView from './MessageView.vue'
+import CommentView from './CommentView.vue'
 import SettingView from './SettingView.vue'
 import SkillView from './SkillView.vue'
 import AdminView from './AdminView.vue'
@@ -18,6 +19,7 @@ export {
     ContentView,
     NetworkView,
     MessageView,
+    CommentView,
     SettingView,
     SkillView,
     AdminView,

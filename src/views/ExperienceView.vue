@@ -2,7 +2,7 @@
     <main>
         <section>
             <ol class="relative border-l ml-2 border-gray-200 dark:border-gray-700">
-                <li class="flex justify-between mb-10 ml-4" v-for="i in store.Products" :key="i.id">
+                <li class="flex justify-between mb-10 ml-4" v-for="i in store.Experiences" :key="i.id">
                     <div :id="`e${i.id}`">
                         <div
                             class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700">
@@ -12,12 +12,12 @@
                         <p class="mb-4 text-base font-normal text-white dark:text-gray-100">{{ i.description }}</p>
                         <ul class="flex flex-wrap gap-5 pb-5 text-white">
                             <li class="flex gap-1 items-center bg-[#8080805b] px-3 rounded-full"
-                                v-for="(i, id) in i.languages.split(',')" :key="id"><span>{{ i }}</span></li>
+                                v-for="(i, id) in i.languages.split(',')" :key="id"><span class="py-1">{{ i }}</span></li>
                         </ul>
                     </div>
                     <div class="flex gap-5 text-white text-xl w-40">
-                        <i class='bx bx-pencil cursor-pointer' @click="editFunc(i.id)"></i><i
-                            @click="deleteProduct(i.id)" class='bx bx-trash cursor-pointer text-red-500'></i>
+                        <i class='bx bx-pencil cursor-pointer' @click="editFunc(i.id)"></i><i @click="deleteProduct(i.id)"
+                            class='bx bx-trash cursor-pointer text-red-500'></i>
                     </div>
                 </li>
                 <li class="ml-4 mb-10">
@@ -210,7 +210,7 @@
                         <button type="button"
                             class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
                             data-modal-hide="popup-modal">
-                            <i class="bx bx-x text-xl font-bold px-1"></i>
+                            <i @click="form.deleteToggle = false" class="bx bx-x text-xl font-bold px-1"></i>
                             <span class="sr-only">Close modal</span>
                         </button>
                         <div class="p-6 text-center">
@@ -221,7 +221,8 @@
                             </svg>
                             <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to
                                 delete this product?</h3>
-                            <button data-modal-hide="popup-modal" type="button" @click="store.deleteProduct(modal.deleteId); form.deleteToggle=false"
+                            <button data-modal-hide="popup-modal" type="button"
+                                @click="store.deleteProduct(modal.deleteId); form.deleteToggle = false"
                                 class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                                 Yes, I'm sure
                             </button>
@@ -240,8 +241,8 @@
 
 <script setup>
 import { onMounted, reactive, ref } from 'vue';
-import { useProductStore } from '../stores/experience.js';
-const store = useProductStore();
+import { useExperienceStore } from '../stores/experience';
+const store = useExperienceStore();
 
 const add = ref(false)
 
@@ -290,7 +291,6 @@ function selected(e) {
 }
 
 async function editFunc(id) {
-    store.getOneProduct(id)
     modal.editId = id;
     const info = document.querySelector(`#e${id}`)
     modal.time = info.querySelector('time').innerHTML;
@@ -317,6 +317,9 @@ function closeFunc() {
 
 const formInfo = () => {
     store.createProducts(form)
+    form.time = ""
+    form.title = ""
+    form.description = ""
     form.toggle = false;
     add.value = false;
 }
@@ -332,7 +335,7 @@ function editProduct() {
     form.editToggle = false;
 }
 
-function deleteProduct(id){
+function deleteProduct(id) {
     modal.deleteId = id;
     form.deleteToggle = true;
 }

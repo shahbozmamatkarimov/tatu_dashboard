@@ -1,23 +1,18 @@
 import { computed, reactive } from 'vue'
 import { defineStore } from 'pinia'
 
-export const useExperienceStore = defineStore('experiences', () => {
+export const useProjectsStore = defineStore('projects', () => {
     const state = reactive({
-        experience: [],
+        projects: [],
     })
 
-    const createProducts = async (form) => {
+    const createProducts = async (data) => {
         let token = localStorage.getItem('tokenAdminPanel');
         try {
-            await fetch('http://localhost:4000/api/experience/create', {
+            await fetch('http://localhost:4000/api/project/create', {
                 method: 'POST',
                 headers: { "Content-Type": "application/json", 'Authorization': `Bearer ${token}` },
-                body: JSON.stringify({
-                    time: form.time,
-                    title: form.title,
-                    description: form.description,
-                    languages: form.languages.join(','),
-                })
+                body: JSON.stringify(data)
             })
             getProducts();
         } catch (error) {
@@ -27,8 +22,9 @@ export const useExperienceStore = defineStore('experiences', () => {
 
     const getProducts = async () => {
         try {
-            const response = await fetch('http://localhost:4000/api/experience/findall')
-            state.experience = await response.json()
+            const response = await fetch('http://localhost:4000/api/project/findall')
+            state.projects = await response.json()
+            return state.projects;
         } catch (error) {
             console.log(error);
         }
@@ -37,7 +33,7 @@ export const useExperienceStore = defineStore('experiences', () => {
     const updateProduct = async (id, data) => {
         let token = localStorage.getItem('tokenAdminPanel');
         try {
-            const response = await fetch(`http://localhost:4000/api/experience/${id}`, {
+            const response = await fetch(`http://localhost:4000/api/project/${id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`, },
                 body: JSON.stringify(data),
@@ -51,7 +47,7 @@ export const useExperienceStore = defineStore('experiences', () => {
     const deleteProduct = async (id) => {
         let token = localStorage.getItem('tokenAdminPanel');
         try {
-            const response = await fetch(`http://localhost:4000/api/experience/${id}`, {
+            const response = await fetch(`http://localhost:4000/api/project/${id}`, {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`, },
             })
@@ -61,7 +57,7 @@ export const useExperienceStore = defineStore('experiences', () => {
         }
     }
 
-    const Experiences = computed(() => state.experience)
+    const Projects = computed(() => state.projects)
 
-    return { state, Experiences, createProducts, getProducts, updateProduct, deleteProduct }
+    return { state, Projects, createProducts, getProducts, updateProduct, deleteProduct }
 })

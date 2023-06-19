@@ -2,7 +2,7 @@
     <main>
         <section>
             <ol class="relative border-l border-gray-200 ml-2 dark:border-gray-700">
-                <li class="flex justify-between mb-10 ml-4" v-for="i in store.Products" :key="i.id">
+                <li class="flex justify-between mb-10 ml-4" v-for="i in store.Skills    " :key="i.id">
                     <div :id="`e${i.id}`">
                         <div
                             class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700">

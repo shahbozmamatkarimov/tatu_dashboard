@@ -3,13 +3,13 @@ import { defineStore } from 'pinia'
 
 export const useSkillStore = defineStore('skills', () => {
     const state = reactive({
-        products: [],
+        skills: [],
     })
 
     const createProducts = async (data) => {
         let token = localStorage.getItem('tokenAdminPanel');
         try {
-            await fetch('http://localhost:3000/api/skills/create', {
+            await fetch('http://localhost:4000/api/skills/create', {
                 method: 'POST',
                 headers: { "Content-Type": "application/json", 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify(data)
@@ -22,9 +22,9 @@ export const useSkillStore = defineStore('skills', () => {
 
     const getProducts = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/skills/findall')
+            const response = await fetch('http://localhost:4000/api/skills/findall')
             const products = await response.json()
-            state.products = products
+            state.skills = products
         } catch (error) {
             console.log(error);
         }
@@ -33,7 +33,7 @@ export const useSkillStore = defineStore('skills', () => {
     const updateProduct = async (id, data) => {
         let token = localStorage.getItem('tokenAdminPanel');
         try {
-            const response = await fetch(`http://localhost:3000/api/skills/${id}`, {
+            const response = await fetch(`http://localhost:4000/api/skills/${id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`, },
                 body: JSON.stringify(data),
@@ -47,7 +47,7 @@ export const useSkillStore = defineStore('skills', () => {
     const deleteProduct = async (id) => {
         let token = localStorage.getItem('tokenAdminPanel');
         try {
-            const response = await fetch(`http://localhost:3000/api/skills/${id}`, {
+            const response = await fetch(`http://localhost:4000/api/skills/${id}`, {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`, },
             })
@@ -57,7 +57,7 @@ export const useSkillStore = defineStore('skills', () => {
         }
     }
 
-    const Products = computed(() => state.products)
+    const Skills = computed(() => state.skills)
 
-    return { state, Products, createProducts, getProducts, updateProduct, deleteProduct }
+    return { state, Skills, createProducts, getProducts, updateProduct, deleteProduct }
 })

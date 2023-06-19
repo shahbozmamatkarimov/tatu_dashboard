@@ -3,13 +3,13 @@ import { defineStore } from 'pinia'
 
 export const useNetworkStore = defineStore('Socialnetworks', () => {
     const state = reactive({
-        products: [],
+        network: [],
     })
 
     const createProducts = async (data) => {
         let token = localStorage.getItem('tokenAdminPanel');
         try {
-            await fetch('http://localhost:3000/api/socialnetworks/create', {
+            await fetch('http://localhost:4000/api/socialnetworks/create', {
                 method: 'POST',
                 headers: { "Content-Type": "application/json", 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify(data)
@@ -22,9 +22,9 @@ export const useNetworkStore = defineStore('Socialnetworks', () => {
 
     const getProducts = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/socialnetworks/findall')
+            const response = await fetch('http://localhost:4000/api/socialnetworks/findall')
             const products = await response.json()
-            state.products = products
+            state.network = products
         } catch (error) {
             console.log(error);
         }
@@ -33,7 +33,7 @@ export const useNetworkStore = defineStore('Socialnetworks', () => {
     const updateProduct = async (id, data) => {
         let token = localStorage.getItem('tokenAdminPanel');
         try {
-            const response = await fetch(`http://localhost:3000/api/socialnetworks/${id}`, {
+            const response = await fetch(`http://localhost:4000/api/socialnetworks/${id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`, },
                 body: JSON.stringify(data),
@@ -47,7 +47,7 @@ export const useNetworkStore = defineStore('Socialnetworks', () => {
     const deleteProduct = async (id) => {
         let token = localStorage.getItem('tokenAdminPanel');
         try {
-            const response = await fetch(`http://localhost:3000/api/socialnetworks/${id}`, {
+            const response = await fetch(`http://localhost:4000/api/socialnetworks/${id}`, {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`, },
             })
@@ -57,7 +57,7 @@ export const useNetworkStore = defineStore('Socialnetworks', () => {
         }
     }
 
-    const Products = computed(() => state.products)
+    const Networks = computed(() => state.network)
 
-    return { state, Products, createProducts, getProducts, updateProduct, deleteProduct }
+    return { state, Networks, createProducts, getProducts, updateProduct, deleteProduct }
 })
