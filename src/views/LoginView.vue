@@ -116,15 +116,14 @@ const formInfo = () => {
           password: form.password,
         },
         {
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*"
-          }
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
         }
       )
-      .then(async (res) => {
-        const data = await res.json();
-        console.log('res', res);
+      .then(async (response) => {
+        // console.log(response);
+        // const data = await response.json();
+        console.log(response);
         const accessToken = data.access_token;
         localStorage.setItem("tokenAdminPanel", accessToken);
         router.push("/");
