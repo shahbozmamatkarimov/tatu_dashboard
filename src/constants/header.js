@@ -58,5 +58,11 @@ export const header = [
         title: 'Settings',
         link: "/settings",
         icon: "bx bx-cog"
+    },
+    {
+        id: 5,
+        title: 'Login',
+        link: "/login",
+        icon: "bx bx-cog"
     }
 ];
