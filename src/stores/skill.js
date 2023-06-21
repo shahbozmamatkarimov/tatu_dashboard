@@ -9,9 +9,10 @@ export const useSkillStore = defineStore('skills', () => {
     const createProducts = async (data) => {
         let token = localStorage.getItem('tokenAdminPanel');
         try {
-            await fetch('http://localhost:4000/api/skills/create', {
+            await fetch('https://portfoliobackend-production-792f.up.railway.app/api/skills/create', {
                 method: 'POST',
-                headers: { "Content-Type": "application/json", 'Authorization': `Bearer ${token}` },
+                mode: 'no-cors',
+                headers: { 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify(data)
             })
             getProducts();
@@ -22,8 +23,9 @@ export const useSkillStore = defineStore('skills', () => {
 
     const getProducts = async () => {
         try {
-            const response = await fetch('http://localhost:4000/api/skills/findall')
+            const response = await fetch('https://portfoliobackend-production-792f.up.railway.app/api/skills/findall')
             const products = await response.json()
+            mode: 'no-cors'
             state.skills = products
         } catch (error) {
             console.log(error);
@@ -33,8 +35,9 @@ export const useSkillStore = defineStore('skills', () => {
     const updateProduct = async (id, data) => {
         let token = localStorage.getItem('tokenAdminPanel');
         try {
-            const response = await fetch(`http://localhost:4000/api/skills/${id}`, {
+            const response = await fetch(`https://portfoliobackend-production-792f.up.railway.app/api/skills/${id}`, {
                 method: 'PUT',
+                mode: 'no-cors',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`, },
                 body: JSON.stringify(data),
             })
@@ -47,8 +50,9 @@ export const useSkillStore = defineStore('skills', () => {
     const deleteProduct = async (id) => {
         let token = localStorage.getItem('tokenAdminPanel');
         try {
-            const response = await fetch(`http://localhost:4000/api/skills/${id}`, {
+            const response = await fetch(`https://portfoliobackend-production-792f.up.railway.app/api/skills/${id}`, {
                 method: 'DELETE',
+                mode: 'no-cors',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`, },
             })
             getProducts()

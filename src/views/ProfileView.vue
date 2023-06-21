@@ -165,8 +165,6 @@
 </template>
 
 <script setup>
-
-
 import { useProfileStore } from '../stores/profile';
 import { ref, reactive, onMounted } from 'vue';
 import axios from 'axios';
