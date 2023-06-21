@@ -97,7 +97,6 @@
 <script setup>
 import { reactive } from "vue";
 import { useRouter } from "vue-router";
-import axios from "axios";
 const router = useRouter();
 
 const form = reactive({
@@ -108,22 +107,21 @@ const form = reactive({
 const formInfo = () => {
   try {
     console.log(form);
-    axios
-      .post(
-        "https://portfoliobackend-production-792f.up.railway.app/api/admin/login",
-        {
+    fetch(
+      "https://portfoliobackend-production-792f.up.railway.app/api/admin/login",
+      {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
           email: form.email,
           password: form.password,
-        },
-        {
-          "Access-Control-Allow-Origin": "*",
-          "Content-Type": "application/json",
-        }
-      )
+        }),
+      }
+    )
       .then(async (response) => {
-        // console.log(response);
-        // const data = await response.json();
         console.log(response);
+        const data = await response.json();
         const accessToken = data.access_token;
         localStorage.setItem("tokenAdminPanel", accessToken);
         router.push("/");
